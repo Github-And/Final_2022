@@ -18,6 +18,10 @@ FinalDat <-read.csv(file="finalFall2022.csv",header=TRUE)
 FinalData <- FinalDat  %>% select(-one_of("X"))
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
+male = filter(FinalData, sex =="M")
+female = filter(FinalData, sex =="F")
+LGBTQ = filter(FinalData, LGBTQ =="gay")
+druggie = filter(FinalData, DrugUser =="yes")
 ```
 
 # Introduction
