@@ -40,7 +40,17 @@ There are two bar plots here. The one we'll talk about first is the percent bar 
 
 The second plot is almost the same as the one we explained, but instead the y-axis represents a count of the male population instead of percentage. As we can see, only a small amount of males in the population actually contracted COVID-19 compared to the section that didn't catch it.
 
+### Numerical Descriptive Results
+```{r}
+table1 <- xtabs(~infected + treatment, data=male)
+rowPerc(table1)
+colPerc(table1)
+```
+The numerical results here show the exact percentage of males taking either the placebo or vaccine that caught COVID-19 and the percentage of males in the population that contracted the disease.
 
+The row table here shows of those infected with COVID-19, 68% of males had taken the placebo and only 31% took the vaccine. Once again, it seems the vaccine is proving to be effective in preventing the disease for males. It also seems like there were more males that took the vaccine rather than the placebo.
+
+The column table shows the percentage of males in the population that either took the placebo or vaccine and whether or not they caught the disease in their respective category. So nearly 3% of males that took the placebo contracted the disease and a mere 1% of males that took the vaccine were infected.
 
 ## Females
 
