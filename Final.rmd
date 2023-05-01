@@ -1,5 +1,5 @@
 ---
-title: "Covid91 vaccine study FinalFall2022"
+title: "Covid91 vaccine study FinalSpring2023"
 author: "Andrew Valles Tovar"
 output: 
   html_document:
@@ -29,6 +29,17 @@ druggie = filter(FinalData, DrugUser =="yes")
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
 ## Males
+
+## Bar Chart
+```{r}
+barchartGC(~infected + treatment,data=male)
+barchartGC(~infected + treatment,data=male, type="percent")
+```
+
+There are two bar plots here. The one we'll talk about first is the percent bar plot which shows the percent of males in the population that took either the placebo or drug and whether or not they caught COVID. Looking at the percent bar plot, it seems a substantial amount of males who took the placebo caught the disease. It seems about 65% of males who took the placebo were infected, and around 30% of those who took the vaccine caught the disease as well. So far it seems the vaccine is effective in preventing the disease for males.
+
+The second plot is almost the same as the one we explained, but instead the y-axis represents a count of the male population instead of percentage. As we can see, only a small amount of males in the population actually contracted COVID-19 compared to the section that didn't catch it.
+
 
 
 ## Females
