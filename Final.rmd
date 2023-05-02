@@ -72,7 +72,17 @@ barchartGC(~infected + treatment,data=female)
 barchartGC(~infected + treatment,data=female, type="percent")
 ```
 
-Strangely, it seems like about 58% of females that caught COVID-19 had taken the vaccine and about 43% took the placebo. Whereas the vaccine seemed effective on males, it doesn't seem like the case for females. On the frequency graph, only a small amount of females in the population contracted the disease.
+Strangely, it seems like about 58% of females that contracted COVID-19 had taken the vaccine and about 43% took the placebo. Whereas the vaccine seemed effective on males, it doesn't seem like the case for females. On the frequency graph, only a small amount of females in the population contracted the disease.
+
+### Numerical Descriptive Results
+```{r}
+table1 <- xtabs(~infected + treatment, data=female)
+rowPerc(table1)
+colPerc(table1)
+```
+The numerical results here show of the females infected with COVID-19, 57% took the vaccine and around 43% took the placebo. There also seems to be slightly more placebo participants than the vaccine. Once again it doesn't seem like the vaccine is helping females very much.
+
+For the column table, 1% of females that took the placebo caught the disease and 2% took the vaccine. So while it is a rather small percentage, more females contracted COVID-19 with the vacine.
 
 ## LGBTQ
 
