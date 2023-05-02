@@ -30,7 +30,7 @@ A new  preventative vaccine (covid921) is under test in clinical trials. Given t
 
 ## Males
 
-## Bar Chart
+### Bar Chart
 ```{r}
 barchartGC(~infected + treatment,data=male)
 barchartGC(~infected + treatment,data=male, type="percent")
@@ -66,7 +66,7 @@ The null hypothesis here is there is no relationship between the treatment and m
 
 ## Females
 
-## Bar Chart
+### Bar Chart
 ```{r}
 barchartGC(~infected + treatment,data=female)
 barchartGC(~infected + treatment,data=female, type="percent")
@@ -97,7 +97,7 @@ The null hypothesis here is there is no relationship between the treatment and f
 
 ## LGBTQ
 
-## Bar Chart
+### Bar Chart
 ```{r}
 barchartGC(~infected + treatment,data=LGBTQ)
 barchartGC(~infected + treatment,data=LGBTQ, type="percent")
@@ -129,7 +129,7 @@ The null hypothesis here is there is no relationship between the treatment and L
 
 ## Druggies
 
-## Bar Chart
+### Bar Chart
 ```{r}
 barchartGC(~infected + treatment,data=druggie)
 barchartGC(~infected + treatment,data=druggie, type="percent")
@@ -149,6 +149,17 @@ colPerc(table1)
 Looking at the row table, we can see that 83% of drug users that contracted COVID-19 had taken the vaccine and almost 17% took the placebo. We can also see that there were slightly more vaccine participants than placebo participants for drug users.
 
 The column table here shows 3% of drug users that were given the vaccine got infected with COVID-19 and barely 1% had taken the placebo. So if you're a drug user, it is more likely to contract the disease while taking the vaccine.
+
+### Inferential Results
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+With the inferential results displayed here, a total of 50 drug users undertaking the vaccine were infected with COVID-19 and 10 were given the placebo. So it's more likely to contract COVID-19 with the vaccine than with the placebo.
+
+The null hypothesis here is there is no relationship between the treatment and drug users and the alternative hypothesis is there is a relationship between the treatment and drug users. The P-value indicated by Fisher's test is 0.0000003119 and the P-value indicated by the Chi-square test is 0.000001419. Both of these P-values are below 0.05, so we reject the null in favor of the alternative.
 
 
 # Overall Results and Conclusions
