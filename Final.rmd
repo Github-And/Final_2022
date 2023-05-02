@@ -28,6 +28,18 @@ druggie = filter(FinalData, DrugUser =="yes")
 
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
+# Coding details
+
+To tackle this study, we need to separate males, females, gay people, and drug users into four subsections using our clinical trial data named "FinalData". Doing this will allow us to go in-depth in whether or not the vaccine is an effective treatment on the specific subsections.
+
+To do this we use the following R code to separate the aforementioned population into a data set.
+
+name = filter(FinalData, category =="x")
+
+What this R code does is in our clinical trial data named "FinalData", we are filtering it for a specific category and value and creating a data set for it. If we are looking for female participants, we would replace "category" with "sex" and have it equal to "F" which represents females.
+
+Now with our four newly created data sets, we can start taking a look to see if the vaccine is effective for each of the data sets. 
+
 ## Males
 
 ### Bar Chart
