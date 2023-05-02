@@ -102,6 +102,7 @@ The null hypothesis here is there is no relationship between the treatment and f
 barchartGC(~infected + treatment,data=LGBTQ)
 barchartGC(~infected + treatment,data=LGBTQ, type="percent")
 ```
+
 The percent bar plot here shows some interesting results. From those that were infected and answered yes to being gay, about 82% took the vaccine and about 16% took the placebo. It seems like if you're LGBTQ, you're highly likely to contract COVID-19 than of the placebo.
 
 For the frequency plot, only a tiny amount of individuals caught the disease whether or not they took the vaccine or placebo with the vaccine being the leading cause.
@@ -116,6 +117,15 @@ Starting with the row table, we can see a surprising amount of LGBTQ's infected 
 
 For the column table, it shows 3% of LGBTQ's given the vaccine caught COVID-19 and not even 1% that were given the placebo contracted the disease.
 
+### Inferential Results
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+According to the inferential data, 52 LGBTQ's infected with COVID-19 took the vaccine and only 8 were given the placebo. Unfortunately, it doesn't seem like the vaccine does it's job if you're LGBTQ.
+
+The null hypothesis here is there is no relationship between the treatment and LGBTQ's and the alternative hypothesis is there is a relationship between the treatment and LGBTQ's. The P-value indicated by Fisher's test is 0.00000001244 and the P-value indicated by the Chi-square test is 0.0000001104. Since both of the P-values are below 0.05, we reject the null in favor of the alternative.
 
 ## Druggies
 
