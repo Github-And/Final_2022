@@ -36,7 +36,7 @@ barchartGC(~infected + treatment,data=male)
 barchartGC(~infected + treatment,data=male, type="percent")
 ```
 
-There are two bar plots here. The one we'll talk about first is the percent bar plot which shows the percent of males in the population that took either the placebo or drug and whether or not they caught COVID. Looking at the percent bar plot, it seems a substantial amount of infected males were under the effects of the placebo. It seems about 65% of infected males took the placebo, and around 30% of took the vaccine. So far it seems the vaccine is effective in preventing the disease for males.
+There are two bar plots here. The one we'll talk about first is the percent bar plot which shows the percent of males in the population that took either the placebo or drug and whether or not they caught COVID. Looking at the percent bar plot, it seems a substantial amount of infected males were under the effects of the placebo. It seems about 65% of infected males took the placebo, and around 35% of took the vaccine. So far it seems the vaccine is effective in preventing the disease for males.
 
 The second plot is almost the same as the one we explained, but instead the y-axis represents a count of the male population instead of percentage. As we can see, only a small amount of males in the population actually contracted COVID-19 compared to the section that didn't catch it. The bar plots going forward from here follow the same explanation.
 
@@ -72,7 +72,7 @@ barchartGC(~infected + treatment,data=female)
 barchartGC(~infected + treatment,data=female, type="percent")
 ```
 
-Strangely, it seems like about 58% of females that contracted COVID-19 had taken the vaccine and about 43% took the placebo. Whereas the vaccine seemed effective on males, this doesn't seem like the case for females. On the frequency graph, only a small amount of females in the population contracted the disease.
+Strangely, it seems like about 58% of females that contracted COVID-19 had taken the vaccine and about 42% took the placebo. Whereas the vaccine seemed effective on males, this doesn't seem like the case for females. On the frequency graph, only a small amount of females in the population contracted the disease.
 
 ### Numerical Descriptive Results
 ```{r}
@@ -103,7 +103,7 @@ barchartGC(~infected + treatment,data=LGBTQ)
 barchartGC(~infected + treatment,data=LGBTQ, type="percent")
 ```
 
-The percent bar plot here shows some interesting results. From those that were infected and answered yes to being gay, about 82% took the vaccine and about 16% took the placebo. It seems like if you're LGBTQ, you're highly likely to contract COVID-19 than of the placebo.
+The percent bar plot here shows some interesting results. From those that were infected and answered yes to being gay, about 82% took the vaccine and about 18% took the placebo. It seems like if you're LGBTQ, you're highly likely to contract COVID-19 than of the placebo.
 
 For the frequency plot, only a tiny amount of individuals caught the disease whether or not they took the vaccine or placebo with the vaccine being the leading cause.
 
@@ -128,6 +128,16 @@ According to the inferential data, 52 LGBTQ's infected with COVID-19 took the va
 The null hypothesis here is there is no relationship between the treatment and LGBTQ's and the alternative hypothesis is there is a relationship between the treatment and LGBTQ's. The P-value indicated by Fisher's test is 0.00000001244 and the P-value indicated by the Chi-square test is 0.0000001104. Since both of the P-values are below 0.05, we reject the null in favor of the alternative.
 
 ## Druggies
+
+## Bar Chart
+```{r}
+barchartGC(~infected + treatment,data=druggie)
+barchartGC(~infected + treatment,data=druggie, type="percent")
+```
+
+The bar plot above represents the population of participants that answered to yes drug use and if they were infected while under the effects of the placebo or vaccine. We can see that in this case as well, the vaccine doesn't seem to be working if you're a drug user. About 86% of those infected had taken the vaccine and about 14% took the placebo.
+
+For the frequency bar plot, once again it seems that only a small amount of drug user participants actually contracted COVID-19 compared to the OK section.
 
 
 # Overall Results and Conclusions
