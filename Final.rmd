@@ -62,7 +62,7 @@ The inferential results here show the exact amount of males in the population an
 
 245 males that had taken the placebo got COVID-19 and 113 of males that took the vaccine also caught the disease. Since there is a difference of 132 males, it seems the vaccine is effective in preventing the disease.
 
-The null hypothesis here is there no relationship between the treatment and males and the alternative hypothesis is there is a relationship between the treatment and males. The P-value indicated by Fisher's test is 0.000000000002364 which is lower than 0.05. The P-value indicated by the Chi-square test is 0.000000000005307 which is also below 0.05. Therefore, we reject the null in favor of the alternative.
+The null hypothesis here is there is no relationship between the treatment and males and the alternative hypothesis is there is a relationship between the treatment and males. The P-value indicated by Fisher's test is 0.000000000002364 which is lower than 0.05. The P-value indicated by the Chi-square test is 0.000000000005307 which is also below 0.05. Therefore, we reject the null in favor of the alternative.
 
 ## Females
 
@@ -83,6 +83,17 @@ colPerc(table1)
 The numerical results here show of the females infected with COVID-19, 57% took the vaccine and around 43% took the placebo. There also seems to be slightly more placebo participants than the vaccine. Once again it doesn't seem like the vaccine is helping females very much.
 
 For the column table, 1% of females that took the placebo caught the disease and 2% took the vaccine. So while it is a rather small percentage, more females contracted COVID-19 with the vacine.
+
+### Inferential Results
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+A total of 207 females that contracted COVID-19 took the vaccine and 155 took the placebo. There's a difference of 57 females, so it doesn't seem like the vaccine is very effective on them. 
+
+The null hypothesis here is there is no relationship between the treatment and females and the alternative hypothesis is there is a relationship between the treatment and females. The P-value indicated by Fisher's test is 00.004887 and the P-value indicated by the Chi-square test is 0.005747. Both of the P-values are below 0.05. Therefore, we reject the null in favor of the alternative.
+
 
 ## LGBTQ
 
