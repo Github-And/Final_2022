@@ -139,5 +139,16 @@ The bar plot above represents the population of participants that answered to ye
 
 For the frequency bar plot, once again it seems that only a small amount of drug user participants actually contracted COVID-19 compared to the OK section.
 
+### Numerical Descriptive Results
+```{r}
+table1 <- xtabs(~infected + treatment, data=druggie)
+rowPerc(table1)
+colPerc(table1)
+```
+
+Looking at the row table, we can see that 83% of drug users that contracted COVID-19 had taken the vaccine and almost 17% took the placebo. We can also see that there were slightly more vaccine participants than placebo participants for drug users.
+
+The column table here shows 3% of drug users that were given the vaccine got infected with COVID-19 and barely 1% had taken the placebo. So if you're a drug user, it is more likely to contract the disease while taking the vaccine.
+
 
 # Overall Results and Conclusions
