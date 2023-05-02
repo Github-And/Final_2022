@@ -48,7 +48,7 @@ colPerc(table1)
 ```
 The numerical results here show the exact percentage of males taking either the placebo or vaccine that caught COVID-19 and the percentage of males in the population that contracted the disease. The numerical results going forward from here follow the same explanation.
 
-The row table here shows of those infected with COVID-19, 68% of males had taken the placebo and only 31% took the vaccine. Once again, it seems the vaccine is proving to be effective in preventing the disease for males. It also seems like there were more males that took the vaccine rather than the placebo.
+The row table shows of those infected with COVID-19, 68% of males had taken the placebo and only 31% took the vaccine. Once again, it seems the vaccine is proving to be effective in preventing the disease for males. It also seems like there were more males that took the vaccine rather than the placebo.
 
 The column table shows the percentage of males in the population that either took the placebo or vaccine and whether or not they caught the disease in their respective category. So nearly 3% of males that took the placebo contracted the disease and a mere 1% of males that took the vaccine were infected.
 
@@ -80,7 +80,7 @@ table1 <- xtabs(~infected + treatment, data=female)
 rowPerc(table1)
 colPerc(table1)
 ```
-Of the females infected with COVID-19, the numerical results here show 57% took the vaccine and around 43% took the placebo. There also seems to be slightly more placebo participants than the vaccine. Once again it doesn't seem like the vaccine is helping females very much.
+Of the females infected with COVID-19, the row table here shows 57% took the vaccine and around 43% took the placebo. There also seems to be slightly more placebo participants than the vaccine. Once again it doesn't seem like the vaccine is helping females very much.
 
 For the column table, 1% of females that took the placebo caught the disease and 2% took the vaccine. So while it is a rather small percentage, more females contracted COVID-19 with the vaccine.
 
@@ -105,6 +105,17 @@ barchartGC(~infected + treatment,data=LGBTQ, type="percent")
 The percent bar plot here shows some interesting results. From those that were infected and answered yes to being gay, about 82% took the vaccine and about 16% took the placebo. It seems like if you're LGBTQ, you're highly likely to contract COVID-19 than of the placebo.
 
 For the frequency plot, only a tiny amount of individuals caught the disease whether or not they took the vaccine or placebo with the vaccine being the leading cause.
+
+### Numerical Descriptive Results
+```{r}
+table1 <- xtabs(~infected + treatment, data=LGBTQ)
+rowPerc(table1)
+colPerc(table1)
+```
+Starting with the row table, we can see a surprising amount of LGBTQ's infected with COVID-19 had taken the vaccine. 87% of the ones infected were distributed the vaccine and 13% were given the placebo. 87% is quite the number so it'd be hard to argue that the vaccine was a success for them.
+
+For the column table, it shows 3% of LGBTQ's given the vaccine caught COVID-19 and not even 1% that were given the placebo contracted the disease.
+
 
 ## Druggies
 
