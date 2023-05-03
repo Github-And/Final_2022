@@ -219,12 +219,29 @@ The column table here shows 3% of drug users that were given the vaccine got inf
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
+drugfisher <- fisher.test(table1)
+drugfisher
 ```
 
 With the inferential results displayed here, a total of 50 drug users undertaking the vaccine were infected with COVID-19 and 10 were given the placebo. So it's more likely to contract COVID-19 with the vaccine than with the placebo.
 
 The null hypothesis here is there is no relationship between the treatment and drug users and the alternative hypothesis is there is a relationship between the treatment and drug users. The P-value indicated by Fisher's test is 0.0000003119 and the P-value indicated by the Chi-square test is 0.000001419. Both of these P-values are below 0.05, so we reject the null in favor of the alternative.
 
+The odds ratio indicated by Fisher's test is 0.208279.
+
+```{r}
+effect <- drugfisher$p.value/(drugfisher$p.value +1)
+effectivenessdrug = drugfisher$estimate/(drugfisher$estimate +1)*100
+print(effectivenessdrug)
+```
+
+```{r}
+low=(drugfisher$conf.int[1]/(drugfisher$conf.int[1] +1))*100
+hi=(drugfisher$conf.int[2]/(drugfisher$conf.int[2] +1))*100
+```
+
+### Effectiveness Confidence Interval `r round(low, digits = 2)`  to `r round(hi, digits = 2)`
+
+Shown above is the effectiveness confidence interval for drug users. If the interval isn't above 50%, then that means the vaccine is not effective in protecting drug users against COVID-19. The confidence level is shown as `r round(low, digits = 2)`  to `r round(hi, digits = 2)` meaning the vaccine is extremely not effective on drug users. To measure how effective the vaccine is on drug users, we use the odds ratio. The odds ratio here is listed as `r round(effectivenessdrug, digits = 2)`.
 
 # Overall Results and Conclusions
