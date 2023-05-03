@@ -77,7 +77,7 @@ The inferential results here show the exact amount of males in the population an
 
 The null hypothesis here is there is no relationship between the treatment and males and the alternative hypothesis is there is a relationship between the treatment and males. The P-value indicated by Fisher's test is 0.000000000002364 which is lower than 0.05. The P-value indicated by the Chi-square test is 0.000000000005307 which is also below 0.05. Therefore, we reject the null in favor of the alternative.
 
-The odds ratio indicated by Fisher's test is 2.2.
+The odds ratio indicated by Fisher's test is 2.1781.
 
 ```{r}
 effect <- malesfisher$p.value/(malesfisher$p.value +1)
@@ -119,12 +119,30 @@ For the column table, 1% of females that took the placebo caught the disease and
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
+femalesfisher <- fisher.test(table1)
+femalesfisher
 ```
 A total of 207 females that contracted COVID-19 took the vaccine and 155 took the placebo. There's a difference of 57 females, so it doesn't seem like the vaccine is very effective on them. 
 
 The null hypothesis here is there is no relationship between the treatment and females and the alternative hypothesis is there is a relationship between the treatment and females. The P-value indicated by Fisher's test is 00.004887 and the P-value indicated by the Chi-square test is 0.005747. Both of the P-values are below 0.05. Therefore, we reject the null in favor of the alternative.
 
+The odds ratio indicated by Fisher's test is 0.74.
+
+```{r}
+effect <- femalesfisher$p.value/(femalesfisher$p.value +1)
+effectivenessfemale = femalesfisher$estimate/(femalesfisher$estimate +1)*100
+print(effectivenessfemale)
+```
+
+```{r}
+low=(femalesfisher$conf.int[1]/(femalesfisher$conf.int[1] +1))*100
+hi=(femalesfisher$conf.int[2]/(femalesfisher$conf.int[2] +1))*100
+options(digits=2)
+```
+
+### Effectiveness Confidence Interval `r low`  to `r hi`
+
+Shown above is the effectiveness confidence interval for females. If the interval isn't above 50%, then that means the vaccine is not effective in protecting females against COVID-19. The confidence level is shown as `r low`  to `r hi` meaning the vaccine is not effective on females. To measure how effective the vaccine is on females, we use the odds ratio. The odds ratio here is listed as 43.
 
 ## LGBTQ
 
