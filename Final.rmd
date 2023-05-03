@@ -88,12 +88,11 @@ print(effectivenessmale)
 ```{r}
 low=(malesfisher$conf.int[1]/(malesfisher$conf.int[1] +1))*100
 hi=(malesfisher$conf.int[2]/(malesfisher$conf.int[2] +1))*100
-options(digits=2)
 ```
 
-### Effectiveness Confidence Interval `r low`  to `r hi`
+### Effectiveness Confidence Interval `r round(low, digits = 2)`  to `r round(hi, digits = 2)`
 
-Shown above is the effectiveness confidence interval for males. If the interval isn't above 50%, then that means the vaccine is not effective in protecting males against COVID-19. The confidence level is shown as `r low`  to `r hi` meaning the vaccine is a success for males. To measure how effective the vaccine is on males, we use the odds ratio. The odds ratio here is listed as `r effectivenessmale` meaning it is effective.
+Shown above is the effectiveness confidence interval for males. If the interval isn't above 50%, then that means the vaccine is not effective in protecting males against COVID-19. The confidence level is shown as `r round(low, digits = 2)`  to `r round(hi, digits = 2)` meaning the vaccine is a success for males. To measure how effective the vaccine is on males, we use the odds ratio. The odds ratio here is listed as `r effectivenessmale` meaning it is effective.
 
 ## Females
 
@@ -137,12 +136,11 @@ print(effectivenessfemale)
 ```{r}
 low=(femalesfisher$conf.int[1]/(femalesfisher$conf.int[1] +1))*100
 hi=(femalesfisher$conf.int[2]/(femalesfisher$conf.int[2] +1))*100
-options(digits=2)
 ```
 
-### Effectiveness Confidence Interval `r low`  to `r hi`
+### Effectiveness Confidence Interval `r round(low, digits = 2)`  to `r round(hi, digits = 2)`
 
-Shown above is the effectiveness confidence interval for females. If the interval isn't above 50%, then that means the vaccine is not effective in protecting females against COVID-19. The confidence level is shown as `r low`  to `r hi` meaning the vaccine is not effective on females. To measure how effective the vaccine is on females, we use the odds ratio. The odds ratio here is listed as 43.
+Shown above is the effectiveness confidence interval for females. If the interval isn't above 50%, then that means the vaccine is not effective in protecting females against COVID-19. The confidence level is shown as `r round(low, digits = 2)`  to `r round(hi, digits = 2)` meaning the vaccine is not effective on females. To measure how effective the vaccine is on females, we use the odds ratio. The odds ratio here is listed as `r round(effectivenessfemale, digits = 2)`.
 
 ## LGBTQ
 
@@ -170,11 +168,29 @@ For the column table, it shows 3% of LGBTQ's given the vaccine caught COVID-19 a
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
+LGBTQfisher <- fisher.test(table1)
+LGBTQfisher
 ```
 According to the inferential data, 52 LGBTQ's infected with COVID-19 took the vaccine and only 8 were given the placebo. Unfortunately, it doesn't seem like the vaccine does it's job if you're LGBTQ.
 
 The null hypothesis here is there is no relationship between the treatment and LGBTQ's and the alternative hypothesis is there is a relationship between the treatment and LGBTQ's. The P-value indicated by Fisher's test is 0.00000001244 and the P-value indicated by the Chi-square test is 0.0000001104. Since both of the P-values are below 0.05, we reject the null in favor of the alternative.
+
+The odds ratio indicated by Fisher's test is 0.1617066.
+
+```{r}
+effect <- LGBTQfisher$p.value/(LGBTQfisher$p.value +1)
+effectivenessLGBTQ = LGBTQfisher$estimate/(LGBTQfisher$estimate +1)*100
+print(effectivenessLGBTQ)
+```
+
+```{r}
+low=(LGBTQfisher$conf.int[1]/(LGBTQfisher$conf.int[1] +1))*100
+hi=(LGBTQfisher$conf.int[2]/(LGBTQfisher$conf.int[2] +1))*100
+```
+
+### Effectiveness Confidence Interval `r round(low, digits = 2)`  to `r round(hi, digits = 2)`
+
+Shown above is the effectiveness confidence interval for gay people. If the interval isn't above 50%, then that means the vaccine is not effective in protecting LGBTQ's against COVID-19. The confidence level is shown as `r round(low, digits = 2)`  to `r round(hi, digits = 2)` meaning the vaccine is extremely not effective on LGBTQ's. To measure how effective the vaccine is on LGBTQ's, we use the odds ratio. The odds ratio here is listed as `r round(effectivenessLGBTQ, digits = 2)`.
 
 ## Druggies
 
