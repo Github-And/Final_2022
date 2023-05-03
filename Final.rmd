@@ -32,7 +32,7 @@ A new  preventative vaccine (covid921) is under test in clinical trials. Given t
 
 To tackle this study, we need to separate males, females, gay people, and drug users into four subsections using our clinical trial data named "FinalData". Doing this will allow us to go in-depth in whether or not the vaccine is an effective treatment on the specific subsections.
 
-To do this we use the following R code to separate the aforementioned population into a data set.
+To do this we use the following R code to separate the aforementioned population into a data set:
 
 name = filter(FinalData, category =="x")
 
@@ -92,7 +92,7 @@ hi=(malesfisher$conf.int[2]/(malesfisher$conf.int[2] +1))*100
 
 ### Effectiveness Confidence Interval `r round(low, digits = 2)`  to `r round(hi, digits = 2)`
 
-Shown above is the effectiveness confidence interval for males. If the interval isn't above 50%, then that means the vaccine is not effective in protecting males against COVID-19. The confidence level is shown as `r round(low, digits = 2)`  to `r round(hi, digits = 2)` meaning the vaccine is a success for males. To measure how effective the vaccine is on males, we use the odds ratio. The odds ratio here is listed as `r effectivenessmale` meaning it is effective.
+Shown above is the effectiveness confidence interval for males. If the interval isn't above 50%, then that means the vaccine is not effective in protecting males against COVID-19. The confidence level is shown as `r round(low, digits = 2)`  to `r round(hi, digits = 2)` meaning the vaccine is a success for males. To measure how effective the vaccine is on males, we use the odds ratio. The odds ratio here is listed as `r round(effectivenessmale, digits = 2)` meaning it is effective.
 
 ## Females
 
@@ -245,3 +245,7 @@ hi=(drugfisher$conf.int[2]/(drugfisher$conf.int[2] +1))*100
 Shown above is the effectiveness confidence interval for drug users. If the interval isn't above 50%, then that means the vaccine is not effective in protecting drug users against COVID-19. The confidence level is shown as `r round(low, digits = 2)`  to `r round(hi, digits = 2)` meaning the vaccine is extremely not effective on drug users. To measure how effective the vaccine is on drug users, we use the odds ratio. The odds ratio here is listed as `r round(effectivenessdrug, digits = 2)`.
 
 # Overall Results and Conclusions
+
+In conclusion, the vaccine seemed to be only effective on males. With an effectiveness of `r round(effectivenessmale, digits = 2)`, males held the highest value compared to the other groups. Females came in second with a value of `r round(effectivenessfemale, digits = 2)`. Gay people had an effectiveness of value of `r round(effectivenessLGBTQ, digits = 2)`. The least effectiveness value was from drug users which is `r round(effectivenessdrug, digits = 2)`.
+
+To summarize, the vaccine should not be administered to females, LGBTQ's, or drug users as they did not pass the 50% effectiveness cutoff and had rather low confidence intervals. The only safe group to administer the vaccine on would be males as they had the highest effectiveness value and confidence interval.
