@@ -60,7 +60,7 @@ colPerc(table1)
 ```
 The numerical results here show the exact percentage of males taking either the placebo or vaccine that caught COVID-19 and the percentage of males in the population that contracted the disease. The numerical results going forward from here follow the same explanation.
 
-The row table shows of those infected with COVID-19, 68% of males had taken the placebo and only 31% took the vaccine. Once again, it seems the vaccine is proving to be effective in preventing the disease for males. It also seems like there were more males that took the vaccine rather than the placebo.
+The row table shows of those infected with COVID-19, 68% of males had taken the placebo and only 32% took the vaccine. Once again, it seems the vaccine is proving to be effective in preventing the disease for males. It also seems like there were more males that took the vaccine rather than the placebo.
 
 The column table shows the percentage of males in the population that either took the placebo or vaccine and whether or not they caught the disease in their respective category. So nearly 3% of males that took the placebo contracted the disease and a mere 1% of males that took the vaccine were infected.
 
@@ -68,13 +68,32 @@ The column table shows the percentage of males in the population that either too
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
+malesfisher <- fisher.test(table1)
+malesfisher
 ```
 The inferential results here show the exact amount of males in the population and whether or not they caught COVID-19 with the placebo or vaccine.
 
 245 males that had taken the placebo got COVID-19 and 113 of males that took the vaccine also caught the disease. Since there is a difference of 132 males, it seems the vaccine is effective in preventing the disease.
 
 The null hypothesis here is there is no relationship between the treatment and males and the alternative hypothesis is there is a relationship between the treatment and males. The P-value indicated by Fisher's test is 0.000000000002364 which is lower than 0.05. The P-value indicated by the Chi-square test is 0.000000000005307 which is also below 0.05. Therefore, we reject the null in favor of the alternative.
+
+The odds ratio indicated by Fisher's test is 2.2.
+
+```{r}
+effect <- malesfisher$p.value/(malesfisher$p.value +1)
+effectivenessmale = malesfisher$estimate/(malesfisher$estimate +1)*100
+print(effectivenessmale)
+```
+
+```{r}
+low=(malesfisher$conf.int[1]/(malesfisher$conf.int[1] +1))*100
+hi=(malesfisher$conf.int[2]/(malesfisher$conf.int[2] +1))*100
+options(digits=2)
+```
+
+### Effectiveness Confidence Interval `r low`  to `r hi`
+
+Shown above is the effectiveness confidence interval for males. If the interval isn't above 50%, then that means the vaccine is not effective in protecting males against COVID-19. The confidence level is shown as `r low`  to `r hi` meaning the vaccine is a success for males. To measure how effective the vaccine is on males, we use the odds ratio. The odds ratio here is listed as `r effectivenessmale` meaning it is effective.
 
 ## Females
 
